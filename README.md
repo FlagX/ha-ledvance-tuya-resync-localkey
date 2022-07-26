@@ -1,7 +1,7 @@
 # ha-ledvance-tuya-resync-localkey
 pyscript for homeassistant to resync local keys from private tuya api
 
-I wrote/stole this script to automatically resync my local keys in the [LocalTuya integration] (https://github.com/rospogrigio/localtuya) for [Home Assistant](https://www.home-assistant.io/).
+I wrote/stole this script to automatically resync my local keys in the [LocalTuya integration](https://github.com/rospogrigio/localtuya) for [Home Assistant](https://www.home-assistant.io/).
 
 ## Prerequisites
 
