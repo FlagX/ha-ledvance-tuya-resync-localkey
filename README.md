@@ -11,9 +11,10 @@ I wrote/stole this script to automatically resync my local keys in the [LocalTuy
 
 ## Setup
 
-- Replace placeholders in `pyscript_modules\tuya\const.py` with your Ledvance account credentials.
+- Replace placeholders in `pyscript\sync_tuya_keys.py` with your Ledvance account credentials.
 - Copy `pyscript_modules` and `pyscript` to your Home Assistant config directory.
 - In your Home Assistant dashboard should be now under `Developer tools` --> `Services` a service called `Pyscript Python scripting: synctuyakeys` that you can call. (You may have to restart before)
+- (If you want Log output, you need to [change the log level to INFO](https://hacs-pyscript.readthedocs.io/en/latest/reference.html#logging) or use [jupyter](https://jupyter.org/install))
 
 ## To just print out your local keys...
 
