@@ -24,10 +24,10 @@ def syncTuyaKeys():
         if (entry.title == 'localtuya'):
             for devId in entry.data['devices'].keys():
                 localKey = entry.data['devices'][devId]['local_key']
-                if (localKeys[devId] != localKey):
+                if (devId in localKeys and localKeys[devId] != localKey):
                     log.info('[New] \tdevId: ' + devId + ', localkey: ' + localKey + ' -> ' + localKeys[devId])
                     new = {**entry.data}
                     new['devices'][devId]['local_key'] = localKeys[devId]
                     hass.config_entries.async_update_entry(entry, data=new)
                 #else:
-                #    log.info('[Up to date]\t devId: ' + devId + ', localkey: ' + localKey)
+                #    log.info('[Unchanged]\t devId: ' + devId + ', localkey: ' + localKey)
