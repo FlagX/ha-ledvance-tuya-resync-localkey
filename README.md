@@ -7,6 +7,8 @@ This repository includes
 
 ## To just print out your local keys...
 
+Replace the placeholders in `print-local-keys.py` and run the script:
+
 ```
 pip install pycryptodome
 python print-local-keys.py
