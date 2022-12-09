@@ -10,7 +10,7 @@ This repository includes
 Install the dependency and run the script:
 ```
 pip install pycryptodome
-./print-local-keys.py
+python print-local-keys.py
 ```
 
 ## How to resync local keys automatically (via service)
