@@ -7,10 +7,15 @@ This repository includes
 
 ## To just print out your local keys...
 
-Install the dependency and run the script:
+Install the dependency and run the script (python 3):
 ```
 pip install pycryptodome
 python print-local-keys.py
+```
+
+On Windows you may have to install the `requests` module before:
+```
+pip install requests
 ```
 
 ## How to resync local keys automatically (via service)
