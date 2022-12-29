@@ -41,7 +41,7 @@ def main():
             print(f'device id:\t{dev.id}')
             print(f'local key:\t{dev.localKey}')
             print('---------------------------')
-
+    input("Press Enter to continue...")
 
 if __name__ == "__main__":
     main()
