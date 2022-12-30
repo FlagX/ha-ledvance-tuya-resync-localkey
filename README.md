@@ -20,7 +20,7 @@ pip install requests
 
 ## How to resync local keys automatically (via service)
 
-If you have many devices and reset them sometimes by accident like me, you can create a service for resyncing the local keys. (New local keys are genereated if you reset/re-register your devices).  
+If you have many devices and reset them sometimes by accident like me, you can create a service for resyncing the local keys. (New local keys are generated if you reset/re-register your devices).  
 
 ### Prerequisites
 
