@@ -3,7 +3,7 @@ import logging
 import hmac
 import hashlib
 import json
-from Crypto.Util.number import bytes_to_long, long_to_bytes
+from Crypto.Util.number import long_to_bytes
 import requests
 import time
 import uuid
