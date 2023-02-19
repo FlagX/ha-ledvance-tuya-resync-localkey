@@ -8,7 +8,7 @@ from tuya.exceptions import InvalidAuthentication
 
 @service
 def syncTuyaKeys():
-    api = TuyaAPI("[REPLACE_WITH_USERNAME]", "[REPLACE_WITH_PASSWORD")
+    api = TuyaAPI("[REPLACE_WITH_USERNAME]", "[REPLACE_WITH_PASSWORD]")
     await hass.async_add_executor_job(api.login)
     groups = await hass.async_add_executor_job(api.groups);
 
