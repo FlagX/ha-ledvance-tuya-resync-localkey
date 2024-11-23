@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import getpass
+import os
 from typing import Tuple
 
 from pyscript_modules.tuya.api import TuyaAPI
@@ -18,8 +19,8 @@ def get_login() -> Tuple[str, str]:
                 pass
             print()
     return (
-        ask_until_ok(lambda: input("Please put your Tuya/Ledvance username: ")),
-        ask_until_ok(lambda: getpass.getpass("Please put your Tuya/Ledvance password: "))
+        os.getenv("LEDVANCE_USERNAME") or ask_until_ok(lambda: input("Please put your Tuya/Ledvance username: ")),
+        os.getenv("LEDVANCE_PASSWORD") or ask_until_ok(lambda: getpass.getpass("Please put your Tuya/Ledvance password: "))
     )
 
 def main():

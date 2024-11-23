@@ -16,6 +16,10 @@ Then install the dependencies and run the script:
 pip install -r requirements.txt
 python print-local-keys.py
 ```
+
+If you want to run the script non-interactively, set the environment variables 
+`LEDVANCE_USERNAME` and `LEDVANCE_PASSWORD` to your Ledvance account credentials.
+
 ## How to resync local keys automatically (via service)
 
 If you have many devices and reset them sometimes by accident, like me, you can create a service for resyncing the local keys. (New local keys are generated if you reset/re-register your devices).  
