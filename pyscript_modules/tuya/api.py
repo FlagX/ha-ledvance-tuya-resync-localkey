@@ -3,14 +3,10 @@ import logging
 import hmac
 import hashlib
 import json
-from Crypto.Util.number import long_to_bytes
 import requests
 import time
 import uuid
 
-from Crypto.PublicKey import RSA
-
-from .textbook_rsa import new as new_textbook_rsa
 from .const import *
 from .exceptions import *
 
@@ -30,6 +26,10 @@ DEFAULT_API_VERSION = "1.0"
 IR_VENDOR = "3"
 
 logger = logging.getLogger(__name__)
+
+def _int_to_bytes(n):
+  # Big-endian, minimal length; 0 becomes b"\x00" (same as Crypto.Util.number.long_to_bytes)
+  return n.to_bytes(max(1, (n.bit_length() + 7) // 8), "big")
 
 class TuyaDevice:
   def __init__(self, api, dev_info, gateway_id=None):
@@ -233,9 +233,10 @@ class TuyaAPI:
   
 
   def _enc_password(self, public_key, exponent, password):
-    key = new_textbook_rsa(RSA.construct((int(public_key), int(exponent))))
-    a = "0000000000000000000000000000000000000000000000000000000000000000" + key.encrypt(hashlib.md5(password.encode("utf8")).hexdigest().encode("utf8")).hex()
-    return a
+    # Tuya's API uses textbook RSA (no padding) on the hex MD5 of the password
+    md5_hex = hashlib.md5(password.encode("utf8")).hexdigest().encode("utf8")
+    c = pow(int.from_bytes(md5_hex, "big"), int(exponent), int(public_key))
+    return "0" * 64 + c.to_bytes((c.bit_length() + 7) // 8, "big").hex()
 
 
   def groups(self):
@@ -307,7 +308,7 @@ class TuyaAPI:
       "dps": {
         "1": "study_key",
         "3": "",
-        "7": base64.encodebytes(long_to_bytes(int(button["compressPulse"], 16))).decode("latin1").replace("\n", ""),
+        "7": base64.encodebytes(_int_to_bytes(int(button["compressPulse"], 16))).decode("latin1").replace("\n", ""),
       }
     } for button in buttons)
 
